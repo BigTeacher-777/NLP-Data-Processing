@@ -14,6 +14,8 @@ I am recently working on sentiment analysis and encountered many difficulties in
 | max_len  | the maximum length of sentences in the dataset |
 |  data    | the dataset converted to index of vocabulary |
 | pad_data | pad all sentences in data |
+| emb_dim  | Embeddings dimension |
+| emb_path | the path to the word embeddings file |
 
 ## Create vocabulary
 **Collect all used words in the dataset in one vocabulary**
@@ -81,6 +83,42 @@ for d in data:
 pad_data = np.array(pad_data)
 
 return pad_data
+```
+
+## Word Embedding
+**Word2vec**
+```
+from gensim.models.keyedvectors import KeyedVectors
+
+self.embedding = nn.Embedding(vocab_size,emb_dim)
+word_vectors = KeyedVectors.load_word2vec_format(emb_path)\
+matrix = []
+for i in range(len(vocab)):
+   word = vocab.keys()[i]
+   if word in word_vectors.vocab:
+      matrix.append(word_vectors.word_vec(word))
+   else:
+      matrix.append(np.random.uniform(-0.01,0.01,300).astype('float32'))
+matrix = np.array(matrix)
+self.embedding.weight.data.copy_(torch.from_numpy(matrix))
+```
+
+**Glove:need to process txt before gensim load**
+```
+f = open(emb_path,'r')
+count = 0
+for line in f:
+   count += 1
+genism_first_line = "{} {}".format(count,emb_dim)
+with open(emb_path,'r') as old:
+   with open(new_emb_path,'w') as new:
+      new.write(str(gensim_first_line)+'\n')
+      shutil.copyfileobj(old,new)
+return new_emb_path
+#the next process is the same as Word2vec
+```
+
+
 
 
 

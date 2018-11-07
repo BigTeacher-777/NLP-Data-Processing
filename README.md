@@ -20,7 +20,7 @@ import operator
 
 num_regex = re.compile('^[+-]?[0-9]+\.?[0-9]*$')
 file = codecs.open(data_file,'r','utf-8')
-word_freqs = {}
+word_freqs = {} #record words and their frequency
 for line in file:
    words = line.split()
    for word in words:

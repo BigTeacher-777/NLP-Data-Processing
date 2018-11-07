@@ -115,7 +115,7 @@ with open(emb_path,'r') as old:
       new.write(str(gensim_first_line)+'\n')
       shutil.copyfileobj(old,new)
 return new_emb_path
-#the next process is the same as Word2vec
+# the next process is the same as Word2vec
 ```
 
 

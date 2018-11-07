@@ -6,9 +6,11 @@ I am recently working on sentiment analysis and encountered many difficulties in
 
 
 ## Variable Define & Setting
- data_file ------ the name of the dataset <br>
-     vocab ------ vocabulary containing all used words in the dataset <br>
-vocab_size ------ the size of vocab
+| Variable | Define & Setting | 
+| :----:   | :----: |
+|data_file | the name of the dataset |
+|  vocab   | vocabulary containing all used words in the dataset |
+|vocab_size| the size of vocab |
 
 ## Create vocabulary
 **Collect all used words in the dataset in one vocabulary**

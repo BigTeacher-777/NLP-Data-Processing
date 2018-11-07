@@ -104,7 +104,7 @@ self.embedding.weight.data.copy_(torch.from_numpy(matrix))
 ```
 
 **Glove:need to process txt before gensim load**
-```
+```Shell
 f = open(emb_path,'r')
 count = 0
 for line in f:
@@ -115,7 +115,7 @@ with open(emb_path,'r') as old:
       new.write(str(gensim_first_line)+'\n')
       shutil.copyfileobj(old,new)
 return new_emb_path
-# the next process is the same as Word2vec
+**the next process is the same as Word2vec**
 ```
 
 

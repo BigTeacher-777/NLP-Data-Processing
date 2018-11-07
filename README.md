@@ -13,6 +13,7 @@ I am recently working on sentiment analysis and encountered many difficulties in
 |vocab_size| the size of vocab |
 | max_len  | the maximum length of sentences in the dataset |
 |  data    | the dataset converted to index of vocabulary |
+| pad_data | pad all sentences in data |
 
 ## Create vocabulary
 **Collect all used words in the dataset in one vocabulary**
@@ -72,8 +73,14 @@ return data,max_len
 
 ## Pad data
 **pad all sentences to the maximum length max_len**
+```
+pad_data = []
+for d in data:
+    tmp = np.pad(d,(max_len-len(d),0),'constant',constant_values=(0))
+    pad_data.append(tmp)
+pad_data = np.array(pad_data)
 
-
+return pad_data
 
 
 

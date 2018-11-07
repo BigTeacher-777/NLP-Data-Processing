@@ -44,7 +44,7 @@ return vocab
 
 ```
 
-## create data
+## Create data
 **transform words in the dataset into the index of vocabulary**
 ```
 file = codecs.open(data_file,'r','utf-8')
@@ -62,13 +62,17 @@ for line in file:
          word_indices.append(word_ind)
       else:
          word_indices.append(vocab['<unk>'])
-      if len(word_indices) > max_len:
-         max_len = len(word_indices)
+   if len(word_indices) > max_len:
+      max_len = len(word_indices)
    data.append(word_indices)
 data = np.array(data)
 
 return data,max_len
 ```
+
+## Pad data
+** pad all sentences to the maximum length max_len**
+
 
 
 

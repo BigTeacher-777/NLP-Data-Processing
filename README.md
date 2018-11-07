@@ -16,15 +16,27 @@ I am recently working on sentiment analysis and encountered many difficulties in
 **Collect all used words in the dataset in one vocabulary**
 ```Shell
 import codecs
+import operator
 
 num_regex = re.compile('^[+-]?[0-9]+\.?[0-9]*$')
 file = codecs.open(data_file,'r','utf-8')
+word_freqs = {}
 for line in file:
    words = line.split()
    for word in words:
       if not bool(num_regrex.match(word)):
          try:
-            word
+            word_freqs[word] += 1
+  	 except KeyError:
+	    word_freqs[word] = 1
+   sorted_word_freqs = sorted(word_freqs.items(), key=operator.itemgetter(1), reverse=True)
+   vocab = {'<pad>':0, '<unk>':1, '<num>':2}
+   index = len(vocab)
+   for word, _ in sorted_word_freqs:
+      vocab[word] = index
+      index += 1
+
+return vocab
 
 ```
 

@@ -12,7 +12,7 @@ vocab_size ------ the size of vocab
 
 ## Create vocabulary
 Collect all used words in the dataset in one vocabulary
-```
+```Shell
 import codecs
 
 num_regex = re.compile('^[+-]?[0-9]+\.?[0-9]*$')

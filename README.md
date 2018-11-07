@@ -6,12 +6,12 @@ I am recently working on sentiment analysis and encountered many difficulties in
 
 
 ## Variable Define & Setting
-data_file  ------ the name of the dataset
-    vocab  ------ vocabulary containing all used words in the dataset
-vocab_size ------ the size of vocab
+		data_file  ------ the name of the dataset
+		vocab  ------ vocabulary containing all used words in the dataset
+		vocab_size ------ the size of vocab
 
 ## Create vocabulary
-Collect all used words in the dataset in one vocabulary
+`Collect all used words in the dataset in one vocabulary`
 ```Shell
 import codecs
 
@@ -23,7 +23,8 @@ for line in file:
       if not bool(num_regrex.match(word)):
          try:
             word
+
 ```
 
-##ss
+## ss
 

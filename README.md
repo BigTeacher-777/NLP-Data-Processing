@@ -71,7 +71,7 @@ return data,max_len
 ```
 
 ## Pad data
-** pad all sentences to the maximum length max_len**
+**pad all sentences to the maximum length max_len**
 
 
 

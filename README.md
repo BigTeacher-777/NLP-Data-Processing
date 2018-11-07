@@ -11,12 +11,15 @@ I am recently working on sentiment analysis and encountered many difficulties in
 |data_file | the name of the dataset |
 |  vocab   | vocabulary containing all used words in the dataset |
 |vocab_size| the size of vocab |
+| max_len  | the maximum length of sentences in the dataset |
+|  data    | the dataset converted to index of vocabulary |
 
 ## Create vocabulary
 **Collect all used words in the dataset in one vocabulary**
 ```Shell
 import codecs
 import operator
+import re
 
 num_regex = re.compile('^[+-]?[0-9]+\.?[0-9]*$')
 file = codecs.open(data_file,'r','utf-8')
@@ -41,5 +44,32 @@ return vocab
 
 ```
 
-## ss
+## create data
+**transform words in the dataset into the index of vocabulary**
+```
+file = codecs.open(data_file,'r','utf-8')
+data = []
+max_len = 0
+for line in file:
+   word_indices = []
+   words = line.split()
+   for word in words:
+      if bool(num_regex.match(word)):
+         word_indices.append(vocab['<num>'])
+         num_hit += 1
+      elif word in vocab:
+         word_ind = vocab[word]
+         word_indices.append(word_ind)
+      else:
+         word_indices.append(vocab['<unk>'])
+      if len(word_indices) > max_len:
+         max_len = len(word_indices)
+   data.append(word_indices)
+data = np.array(data)
+
+return data,max_len
+```
+
+
+
 

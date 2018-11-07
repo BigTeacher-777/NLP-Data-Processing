@@ -6,12 +6,12 @@ I am recently working on sentiment analysis and encountered many difficulties in
 
 
 ## Variable Define & Setting
-data_file  ------ the name of the dataset <br>
-vocab  ------ vocabulary containing all used words in the dataset <br>
+ data_file ------ the name of the dataset <br>
+     vocab ------ vocabulary containing all used words in the dataset <br>
 vocab_size ------ the size of vocab
 
 ## Create vocabulary
-\[Collect all used words in the dataset in one vocabulary\]
+**Collect all used words in the dataset in one vocabulary**
 ```Shell
 import codecs
 
